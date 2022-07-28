@@ -5,14 +5,14 @@ const generateMarkdown = require("./utils/generateMarkdown.js");
 const apiquery = require("./utils/apiqueries");
 
 // contributor guidelines (yes or no)
-const yesContributors = "Contributing to this project? Please follow the guidelines specified [here](https://www.contributor-covenant.org/version/2/1/code_of_conduct/)"
+const yesContributors = "Contributing to this project? Please follow the guidelines specified [here](https://www.contributor-covenant.org/version/2/1/code_of_conduct/)."
 const noContributors = "This project is not accepting contributions from any outside developers at this time."
 
 // license specifications
-const mitLicense ="This project is licensed under the [MIT License](https://opensource.org/licenses/MIT)."
-const apacheLicense = "This project is licensed under the [Apache License](https://www.apache.org/licenses/LICENSE-2.0)."
-const gnuLicense = "This project is licensed under the [GNU License](https://www.gnu.org/licenses/gpl-3.0-standalone.html)"
-const iscLicense = "This project is licensed under the [ISC License](https://www.isc.org/licenses/)"
+const mitLicense ="This project is licensed under the [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)"
+const apacheLicense = "This project is licensed under the [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)."
+const gnuLicense = "This project is licensed under the [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)"
+const iscLicense = "This project is licensed under the [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)"
 
 // Create a question for github user input
 const gitHubUserQuestion = [
@@ -32,7 +32,7 @@ const questions = [
     {
         type: "input",
         name: "description",
-        message:  "Describe your project"
+        message:  "Describe your project:"
     },  
     {
         type: "input",
@@ -109,12 +109,12 @@ async function compileData() {
 
         // Look for contributor choices
         if(response.contributors === "Yes"){
-            responses.contributors = yesContributors;
+            response.contributors = yesContributors;
           } else{
             response.contributors = noContributors;
 
             }
-
+        // Look for license choices
             if(response.license === "Apache License 2.0"){
                 response.license = apacheLicense;
             } else if (response.license === "ISC"){
@@ -126,7 +126,8 @@ async function compileData() {
             } else{
                 response.license = "There is no license for this project."
             }
-
+            
+            // generate the readme based on the user's answers to the questions
             writeToFile("CreatedREADME.md", generateMarkdown(response));
         } catch (err){
             console.log(err);
