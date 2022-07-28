@@ -2,6 +2,11 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 const generateMarkdown = require("./utils/generateMarkdown.js");
+const apiquery = require("./utils/apiqueries");
+
+// contributor guidelines (yes or no)
+const yesContributors = "Contributing to this project? Please follow the guidelines specified [here](https://www.contributor-covenant.org/version/2/1/code_of_conduct/)"
+const noContributors = "This project is not accepting contributions from any outside developers"
 
 // TODO: Create an array of questions for user input
 const questions = [
