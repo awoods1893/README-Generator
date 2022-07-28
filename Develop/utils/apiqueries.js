@@ -7,6 +7,7 @@ const apiquery = {
         const queryUrl = `https://api.github.com/users/${username}`; 
         
         // pulling email address from github - got the .email object from running a postman query
+        
         await axios
         .get(queryUrl)
         .then(function(res){
