@@ -14,6 +14,14 @@ const apacheLicense = "This project is licensed under the [Apache License](https
 const gnuLicense = "This project is licensed under the [GNU License](https://www.gnu.org/licenses/gpl-3.0-standalone.html)"
 const iscLicense = "This project is licensed under the [ISC License](https://www.isc.org/licenses/)"
 
+// Create a question for github user input
+const gitHubUserQuestion = [
+    {
+        type: "input",
+        name: "username",
+        message: "Please enter your GitHub username:"
+    }
+];
 // TODO: Create an array of questions for user input
 const questions = [
     {
@@ -67,10 +75,66 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, function(err){
+        if(err){
+            console.log(err);
+        } else{
+            console.log("Inputs Received.");
+        }
+    });
+};
 
-// TODO: Create a function to initialize app
-function init() {}
+//Function for compiling the user's answers from the question prompts
+async function compileData() {
+    try {
 
-// Function call to initialize app
-init();
+        //prompt for github username
+        await inquirer.prompt(gitHubUserQuestion)
+        .then(function(res){
+            return username = res.username;
+        });
+
+        await apiquery.getGitHubUser(username);
+
+        //prompt for questions
+        await inquirer.prompt(questions)
+        .then(function(res){
+            return response = res;
+        });
+
+        response.username = username;
+        response.image = gitHubProfilePic;
+        response.email = gitHubEmailAddress;
+
+        // Look for contributor choices
+        if(response.contributors === "Yes"){
+            responses.contributors = yesContributors;
+          } else{
+            response.contributors = noContributors;
+
+            }
+
+            if(response.license === "Apache License 2.0"){
+                response.license = apacheLicense;
+            } else if (response.license === "ISC"){
+                response.license = iscLicense;
+            } else if (response.license === "MIT"){
+                response.license = mitLicense;
+            } else if (response.license === "GNU GPLv3"){
+                response.license = gnuLicense;
+            } else{
+                response.license = "There is no license for this project."
+            }
+
+            writeToFile("CreatedREADME.md", generateMarkdown(response));
+        } catch (err){
+            console.log(err);
+        };
+    };
+    
+    // run node index.js
+        compileData();
+
+
+
