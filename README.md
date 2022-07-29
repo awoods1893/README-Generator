@@ -31,5 +31,5 @@ THEN this is added to the section of the README entitled Questions, with instruc
 THEN I am taken to the corresponding section of the README
 
 
-![Video](https://drive.google.com/file/d/1E8gdwAIwJGq7_FWOlrAmWgw5AW9FfItu/view)
+https://drive.google.com/file/d/1E8gdwAIwJGq7_FWOlrAmWgw5AW9FfItu/view
 
