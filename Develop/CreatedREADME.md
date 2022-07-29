@@ -13,19 +13,20 @@
   * [Questions](#Questions)
 
   # Project Description
-  sdfsdfsd
+  This project is for people who are feeling...."Illusive..."
 
   # Usage
-  sdfsdfsdf
+  Testing purposes
 
   # Tests
-  sdfsdfsd
+  Very carefully
 
   # Installation
-  sdfsdfsdf
+  All of them
 
   # License
-  This project is licensed under the following license: [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
+  This project is covered by the following license: 
+  [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
 
   # Contributions
   Contributing to this project? Please follow the guidelines specified [here](https://www.contributor-covenant.org/version/2/1/code_of_conduct/).
